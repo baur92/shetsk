@@ -925,6 +925,21 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	}
 }
 
+/**/
+/* last news */
+/**/
+.links .widget-icon {
+	background-image: url(../img/blue/links.png);
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+	.links .widget-icon {
+		background-image: url('../img/blue/links.png');
+		background-size: 78px 71px;
+	}
+}
+
 
 /**/
 /* location */

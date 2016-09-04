@@ -7,11 +7,24 @@ use yii\helpers\Html;
 $this->title = 'State-symbols';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<section class="page-title">
+    <div class="grid-row clearfix">
+        <h1><?= Yii::t('app', 'page.state-symbols')?></h1>
+        
+        <!-- <nav class="bread-crumbs">
+            <a href="index-2.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+            <a href="news-default.html">News</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+            <a href="#">Full width</a>
+        </nav> -->
+    </div>
+</section>
+
 <div class="site-state-symbols">
     <div class="grid-row">
 		<div class="grid-col grid-col-12">
 			<!-- tabs -->
-			<div class="widget-title"><?= Yii::t('app', 'page.state-symbols')?></div>
+			<!-- <div class="widget-title"><?= Yii::t('app', 'page.state-symbols')?></div> -->
 			<div class="wpb_tour wpb_content_element">
 				<div class="wpb_tour_tabs_wrapper clearfix">
 					<ul class="wpb_tabs_nav clearfix" role="tablist">

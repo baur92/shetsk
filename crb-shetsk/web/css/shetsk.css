@@ -1,0 +1,28 @@
+.citation {
+  text-align:center;
+  font-size: 20px;
+}
+
+.employee a {
+  	text-decoration: none;
+}
+
+
+
+.ctable {
+color: #fff; /* Lighten up font color */
+font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+font-size: 16px;
+border-collapse:
+collapse; border-spacing: 0;
+}
+
+.ctable td, th { border: 1px solid #0b11e0; height: 40px; } /* Make cells a bit taller */
+
+.ctable th {
+font-weight: bold; /* Make sure they're bold */
+}
+
+.ctable td {
+text-align: center; /* Center our text */
+}

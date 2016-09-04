@@ -11,13 +11,26 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<section class="page-title">
+    <div class="grid-row clearfix">
+        <h1><?= Yii::t('app', 'page.contact.location')?></h1>
+        
+        <!-- <nav class="bread-crumbs">
+            <a href="index-2.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+            <a href="news-default.html">News</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+            <a href="#">Full width</a>
+        </nav> -->
+    </div>
+</section>
+
 <div class="site-contact">
     <!-- page content -->
     <main class="page-content">
         <div class="grid-row">
             <!-- map -->
             <section class="map">
-                <div class="widget-title"><?= Yii::t('app', 'page.contact.location')?></div>
+                <!-- <div class="widget-title"><?= Yii::t('app', 'page.contact.location')?></div> -->
                 <div id="map" class="google-map"></div>
             </section>
             <!--/ map -->

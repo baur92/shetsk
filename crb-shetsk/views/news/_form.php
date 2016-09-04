@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\datepicker\DatePicker;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -28,6 +28,11 @@ use dosamigos\datepicker\DatePicker;
                 'format' => 'dd-M-yyyy'
             ]
     ]);?> -->
+
+    <?= $form->field($model, 'create_date_')->widget(\yii\jui\DatePicker::classname(), [
+        'language' => 'ru',
+        'dateFormat' => 'MM-dd-yyyy',
+        ]) ?>
 
     <?= $form->field($model, 'video')->textInput(['rows' => 6]) ?>
 

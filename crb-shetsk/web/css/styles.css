@@ -1199,7 +1199,6 @@ nav p{
 	display: none;
 }
 .main-nav li li a:before {
-	content: '- ';
 	position: static;
 	width: auto;
 	height: auto;
@@ -1580,8 +1579,7 @@ nav p{
 /* page title */
 /**/
 .page-title {
-	margin-bottom: 50px;
-	border-top-width: 7px;
+	margin-bottom: 20px;
 	border-top-style: solid;
 	color: #fff;
 }
@@ -1622,7 +1620,6 @@ nav p{
     float: none;
     margin-right: 0;
     padding-top: 0;
-    padding-bottom: 18px;
   }
 }
 
@@ -4918,7 +4915,7 @@ iframe{
 	display: none;
 	margin-bottom: -1px;
 }
-.detailed-services .row {
+.detailed-services .crow {
 	padding: 15px 0;
 	border: 1px solid #e3e3e3;
 	background: #f5f5f5;
@@ -4926,7 +4923,7 @@ iframe{
 .detailed-services .col {
 	display: inline-block;
 	vertical-align: top;
-	width: 33.33%;
+	width: 33%;
 	margin: 20px 0;
 	padding: 0 40px;
 	border-left: 1px solid #e3e3e3;
@@ -4934,6 +4931,40 @@ iframe{
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+.detailed-services .col-2 {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+  margin: 20px 0;
+  padding: 0 40px;
+  border-left: 1px solid #e3e3e3;
+  -ms-box-sizing:border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.detailed-services .col-3 {
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
+  margin: 20px 0;
+  padding: 0 40px;
+  border-left: 1px solid #e3e3e3;
+  -ms-box-sizing:border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.detailed-services .col-4 {
+  display: inline-block;
+  vertical-align: top;
+  width: 24%;
+  margin: 20px 0;
+  padding: 0 40px;
+  border-left: 1px solid #e3e3e3;
+  -ms-box-sizing:border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
 .detailed-services .col:first-child {
 	border-left: 0;
 }
@@ -5642,7 +5673,7 @@ i.appointment{
 .widget-appointment textarea {
 	height: auto;
 }
-.widget-appointment .row {
+.widget-appointment .crow {
 	position: relative;
 	margin-bottom: -1px;
 }
@@ -6146,11 +6177,11 @@ i.appointment{
 	margin: 0 10px;
 	text-align: center;
 }
-.last-news li {
+/*.last-news li {
 	margin-top: 20px;
 	padding-top: 20px;
 	border-top: 1px solid rgba(255,255,255,0.2);	
-}
+}*/
 .last-news li:first-child {
 	margin-top: 0;
 	padding-top: 0;

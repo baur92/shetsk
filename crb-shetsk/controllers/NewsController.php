@@ -19,6 +19,7 @@ class NewsController extends Controller
      */
     public function behaviors()
     {
+        $this->layout = 'admin';
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),

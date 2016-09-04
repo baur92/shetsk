@@ -18,15 +18,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/site.css',
         'css/styles.css',
         'css/layerslider.css',
-        'css/fullwidth/skin.css',
         'css/font-awesome.css',
         'css/owl.carousel.css',
         'css/jquery.fancybox.css',
         'css/color-blue.css',
-        'tuner/css/styles.css'
+        'tuner/css/styles.css',
+        'css/shetsk.css'
     ];
     public $js = [
         'tuner/js/scripts.js',

@@ -1,4 +1,5 @@
 	$(document).ready(function (){
+
 		$("video").attr("preload","none");
 		$(".detailed-services dt.opened").next().slideToggle('fast');
 		$(".widget-contacts dt.opened").next().slideToggle('fast');
