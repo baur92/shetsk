@@ -444,7 +444,7 @@ $(function()
 	{
 		var script = document.createElement('script');
 	 	script.type = 'text/javascript';
-	 	script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&callback=init_map';
+	 	script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&callback=init_map&key=AIzaSyBcF8hXcYQ9sp_wh4cGhj811BvBc8WAjTA';
 	 	document.body.appendChild(script);
  	}
 	

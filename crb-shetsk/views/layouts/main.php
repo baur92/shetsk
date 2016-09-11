@@ -184,7 +184,7 @@ AppAsset::register($this);
                 </li>       
                 <li>
                     <?= Html::a(
-                        '<i class="fa fa-plus"></i>'.Yii::t('app', 'menu.page.state-symbols'), 
+                        '<i class="fa fa-plus"></i><p style="word-wrap: break-word;">'.Yii::t('app', 'menu.page.state-symbols').'</p>', 
                         ['/site/state-symbols'], 
                         ['class' => ($this->context->route == 'site/state-symbols')?'active':'']) 
                     ?>

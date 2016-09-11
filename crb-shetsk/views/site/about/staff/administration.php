@@ -62,13 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
 						<section class="widget widget-sevices">
 							<div class="widget-title"><?= Yii::t('app', 'page.administration.org.department')?></div>
 							<ul class="employee">
-								<li><i class="fa fa-user-md"></i><a><p>Орынбасарова Айжан Орынбасаркызы</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Жумабай  Светлана Кабылбеккызы</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Есмагамбетова Гульбаршин Нуртаевна</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Ибрайкин Талгат Канатович</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Рахимбаева Насип Рахимбаевна</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Нурланбекова Асель Ерболовна</p><p>asdasdasdasdasdads</p></a></li>
-								<li><i class="fa fa-user-md"></i><a><p>Малгаждарова Акмарал</p><p>asdasdasdasdasdads</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Орынбасарова Айжан Орынбасаркызы</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Жумабай  Светлана Кабылбеккызы</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Есмагамбетова Гульбаршин Нуртаевна</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Ибрайкин Талгат Канатович</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Рахимбаева Насип Рахимбаевна</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Нурланбекова Асель Ерболовна</p></a></li>
+								<li><i class="fa fa-user-md"></i><a><p>Малгаждарова Акмарал</p></a></li>
 							</ul>
 						</section>
 						<!--/ categories -->

@@ -40,9 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="grid-col grid-col-9">
                 <!-- feedback -->
                 <article class="feedback">
-                    <div class="widget-title">Get in touch by filling the form below</div>
-                                
-                    <p>Donec lacinia suscipit magna, et pulvinar tortor facilisis quis. Donec tempor erat vel scelerisque posuere. Nam elementum elit eget tellus faucibus euismod. Aliquam turpis nibh, dictum eu consequat ac, facilisis eu elit. Pellentesque pellentesque orci quam, nec tempus nibh congue ut. Pellentesque tempus vehicula lectus eget tempor. Donec suscipit enim dui, ut sagittis orci rhoncus id.</p>
+                    <div class="widget-title">Свяжитесь с нами, заполнив форму</div>
                     
                     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
@@ -65,20 +63,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                            <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                            <?= $form->field($model, 'name')->label('Имя')->textInput() ?>
 
-                            <?= $form->field($model, 'email') ?>
+                            <?= $form->field($model, 'email')->label('Е-мэйл') ?>
 
-                            <?= $form->field($model, 'subject') ?>
+                            <?= $form->field($model, 'subject')->label('Тема') ?>
 
-                            <?= $form->field($model, 'body')->textArea(['rows' => 6]) ?>
+                            <?= $form->field($model, 'body')->label('Текст')->textArea(['rows' => 6]) ?>
 
-                            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                            <?= $form->field($model, 'verifyCode')->label('Проверочный код')->widget(Captcha::className(), [
                                 'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                             ]) ?>
 
                             <div class="form-group">
-                                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                             </div>
 
                         <?php ActiveForm::end(); ?>    
@@ -90,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="grid-col grid-col-3">                       
                 <!-- contacts -->
                 <section class="widget widget-contacts">
-                    <div class="widget-title">Contact Details</div>
+                    <div class="widget-title">Контакты</div>
                     <dl>
                         <dt class="opened">Adolescent Gynecology</dt>
                         <dd>
