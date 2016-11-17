@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\widgets\LinkPager;
 
-$this->title = 'Contact';
+$this->title = Yii::t('app', 'menu.page.about.staff.administration');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'State-symbols';
+$this->title = Yii::t('app', 'page.state-symbols');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

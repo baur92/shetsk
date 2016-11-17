@@ -113,9 +113,9 @@ a {
 .quick-search input::-webkit-input-placeholder {
 	color: #008fd5;
 }
-.quick-search button {
+/*.quick-search button {
 	color: #008fd5;
-}
+}*/
 .quick-search .switcher {
 	background: url(../img/blue/quick-search.png);	
 }
@@ -544,7 +544,7 @@ a {
 	background: #4db1e2;
 }
 .milestone .title {
-	color: #008fd5;
+	color: #fff;
 }
 .milestone-alt .icon {
 	color: #008fd5;

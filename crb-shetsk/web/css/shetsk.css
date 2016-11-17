@@ -26,3 +26,13 @@ font-weight: bold; /* Make sure they're bold */
 .ctable td {
 text-align: center; /* Center our text */
 }
+
+.auto {
+    border: 1px solid #008fd5;
+    padding: 20px;
+}
+
+.contact-divider {
+	margin: 10px 0px 10px 0px;
+	border-bottom:  1px dashed;
+}

@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = Yii::t('app', 'page.contact.location');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -41,23 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <!-- feedback -->
                 <article class="feedback">
                     <div class="widget-title">Свяжитесь с нами, заполнив форму</div>
-                    
                     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
                         <div class="alert alert-success">
-                            Thank you for contacting us. We will respond to you as soon as possible.
+                            Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
                         </div>
-
-                        <p>
-                            Note that if you turn on the Yii debugger, you should be able
-                            to view the mail message on the mail panel of the debugger.
-                            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                                Because the application is in development mode, the email is not sent but saved as
-                                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                                application component to be false to enable email sending.
-                            <?php endif; ?>
-                        </p>
 
                     <?php else: ?>
 
@@ -76,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]) ?>
 
                             <div class="form-group">
-                                <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                                <?= Html::submitButton('Отправить', ['class' => 'button', 'name' => 'contact-button']) ?>
                             </div>
 
                         <?php ActiveForm::end(); ?>    
@@ -90,60 +78,281 @@ $this->params['breadcrumbs'][] = $this->title;
                 <section class="widget widget-contacts">
                     <div class="widget-title">Контакты</div>
                     <dl>
-                        <dt class="opened">Adolescent Gynecology</dt>
+                        <dt class="opened">Поликлиники</dt>
                         <dd>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Районная поликлиника в составе ЦРБ</li>
+                                <li><i class="fa fa-map-marker"></i>с.Аксу-Аюлы ул. Жапакова 23</li>
+                                <li><i class="fa fa-phone"></i>21145, 21357</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Поликлиника сельской больницы п. Агадырь</li>
+                                <li><i class="fa fa-map-marker"></i>п. Агадырь ул.Абая 17</li>
+                                <li><i class="fa fa-phone"></i>927423</li>
                             </ul>
                         </dd>
-                        <dt>Breast Cancer Gene (BRCA)</dt>
+                        <dt>Больницы</dt>
                         <dd>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Центральная районная больница</li>
+                                <li><i class="fa fa-map-marker"></i>с.Аксу-Аюлы ул. Жапакова 23</li>
+                                <li><i class="fa fa-phone"></i>21145, 21357</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Сельская больница п. Агадырь</li>
+                                <li><i class="fa fa-map-marker"></i>п. Агадырь ул.Абая 17</li>
+                                <li><i class="fa fa-phone"></i>927423</li>
                             </ul>
                         </dd>
-                        <dt>Replacement Therapy</dt>
+                        <dt>Врачебные амбулатории</dt>
                         <dd>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Акжал</li>
+                                <li><i class="fa fa-map-marker"></i>п.Акжал ул. Микрорайон 7А</li>
+                                <li><i class="fa fa-phone"></i>37103</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория «Актобе»</li>
+                                <li><i class="fa fa-map-marker"></i>п.Акшатау ул. С.Сейфуллина 1</li>
+                                <li><i class="fa fa-phone"></i>924562</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория  Бурма</li>
+                                <li><i class="fa fa-map-marker"></i>п. Бурма ул Центральная 13</li>
+                                <li><i class="fa fa-phone"></i>3435313</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Жарык</li>
+                                <li><i class="fa fa-map-marker"></i>п.Жарык ул.С.Сейфуллина 23</li>
+                                <li><i class="fa fa-phone"></i>3424395</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Коктенколь</li>
+                                <li><i class="fa fa-phone"></i>87103326271</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Красная поляна Врачебная амбулатория Мойынты</li>
+                                <li><i class="fa fa-map-marker"></i>п.Красная Поляна ул Набережная 9 п.Мойынты Таныбай Батыр 27</li>
+                                <li><i class="fa fa-phone"></i>87105953340, 961055</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Нураталды</li>
+                                <li><i class="fa fa-map-marker"></i>п.Нураталды ул. Молдагулова 10</li>
+                                <li><i class="fa fa-phone"></i>50772</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Врачебная амбулатория Успен</li>
+                                <li><i class="fa fa-phone"></i>87104238107</li>
                             </ul>
                         </dd>
-                        <dt>Diagnosis With Precise</dt>
+                        <dt>ФАПы</dt>
                         <dd>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Акой</li>
                             </ul>
-                        </dd>
-                        <dt>STD Screening</dt>
-                        <dd>
+                            <ul class="contact-divider"></ul>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Батык</li>
                             </ul>
-                        </dd>
-                        <dt>Occupational Health</dt>
-                        <dd>
+                            <ul class="contact-divider"></ul>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Босага</li>
                             </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Жумыскер</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Кеншокы</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Киик</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Н.Кайракты</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Фельдшерской – акушерский пункт Талды</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
                         </dd>
-                        <dt>Rhinosinusitis</dt>
+                        <dt>МП</dt>
                         <dd>
                             <ul>
-                                <li><i class="fa fa-map-marker"></i>365 Montauk Avenue</li>
-                                <li><i class="fa fa-phone"></i>Call us: 203-284-2818</li>
-                                <li><i class="fa fa-envelope"></i>E-mail: clinico@domain.com</li>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Акшокы</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Алихан</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Дария</li>
+                                <li><i class="fa fa-map-marker"></i>п.Дария ул Абая 0</li>
+                                <li><i class="fa fa-phone"></i>61204</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Кызылгой</li>
+                                <li><i class="fa fa-map-marker"></i>Бейбитшилик  61/2</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Акшатау</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Унирек</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Карабулак</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Ортау</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Мынбаева</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Еркиндик</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Аксу</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Енбекшил</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Актобе</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Аккияк</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Тумсык</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Кармыс</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Аксу</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Шопа</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Берекет</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Жана Журт</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Мухтар</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Пикет</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Карамурын</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Куттыбай</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Айгыржал</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Айса</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Кызыл ту</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Карасаз</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Верхний Кайракты</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Аксарлы</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Жыланды</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Целиный</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Ески орта</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Сулу Мадине</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Акбауыр</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Каргалы</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Кайракты</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Медицинский пункт Акшагыл</li>
+                            </ul>
+                            <ul class="contact-divider"></ul>
+                        </dd>
+                        <dt>СЭС</dt>
+                        <dd>
+                            <ul>
+                                <li><i class="fa fa-hospital-o"></i>Районное Управления по защите прав потребителей</li>
+                                <li><i class="fa fa-map-marker"></i>п. Агадырь ул. Абая</li>
+                                <li><i class="fa fa-phone"></i>928323</li>
                             </ul>
                         </dd>
                     </dl>

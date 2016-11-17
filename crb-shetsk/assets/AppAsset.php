@@ -53,7 +53,8 @@ class AppAsset extends AssetBundle
         'js/jquery.ui.accordion.min.js',
         'js/jquery.tweet.js',
         'js/jquery.easypiechart.js',
-        'js/scripts.js'
+        'js/scripts.js',
+        'js/slider/jquery.jcarousellite.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -1,3 +1,19 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model app\models\ContactForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
+use yii\widgets\LinkPager;
+
+$this->title = Yii::t('app', 'menu.page.about.structure');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
+
 <section class="page-title">
     <div class="grid-row clearfix">
         <h1><?= Yii::t('app', 'menu.page.about.structure')?></h1>

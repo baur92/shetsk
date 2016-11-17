@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\widgets\LinkPager;
 
-$this->title = 'Contact';
+$this->title = Yii::t('app', 'menu.page.comments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -27,45 +27,55 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <main class="page-content">
 	<div class="grid-row">
+		<?= LinkPager::widget([
+                        'pagination' => $pages,
+                    ]);?>   
+
 		<section class="widget comments">	
-			<div class="widget-title">3 Comments</div>
+			<div class="widget-title">Всего отзывов <?= $total ?></div>
 			
 			<ul>
-				<li>
-					<div class="avatar"><i class="fa fa-user"></i></div>
-					<div class="text">
-						<div class="author"><a href="#">Reply <i class="fa fa-angle-double-right"></i></a><span>Callis Ta'eed</span> &nbsp; August 17, 47 minutes ago</div>
-						<p>Nulla lobortis facilisis eros vitae mollis. Morbi consectetur, tortor ut feugiat rhoncus, nunc augue placerat massa, sit amet laoreet est libero quis nisl. Integer cursus sodales sem eu dapibus. Morbi lobortis eleifend lectus sit amet porttitor. Nam tincidunt congue laoreet.</p>
-					</div>
-					<ul>
-						<li>
-							<div class="avatar"><i class="fa fa-user"></i></div>
-							<div class="text">
-								<div class="author"><a href="#">Reply <i class="fa fa-angle-double-right"></i></a><span>Admin</span> &nbsp; August 18, 47 minutes ago</div>
-								<p>Nulla lobortis facilisis eros vitae mollis. Morbi consectetur, tortor ut feugiat rhoncus, nunc augue placerat massa, sit amet laoreet est libero quis nisl. Integer cursus sodales sem eu dapibus. Morbi lobortis eleifend lectus sit amet porttitor. Nam tincidunt congue laoreet.</p>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<div class="avatar"><i class="fa fa-user"></i></div>
-					<div class="text">
-						<div class="author"><a href="#">Reply <i class="fa fa-angle-double-right"></i></a><span>Richard Delano</span> &nbsp; August 15</div>
-						<p>Nulla lobortis facilisis eros vitae mollis. Morbi consectetur, tortor ut feugiat rhoncus, nunc augue placerat massa, sit amet laoreet est libero quis nisl. Integer cursus sodales sem eu dapibus. Morbi lobortis eleifend lectus sit amet porttitor. Nam tincidunt congue laoreet.</p>
-					</div>
-				</li>
+				<?php 
+                    foreach($comments as $comment){
+                        echo '<li>
+								<div class="avatar"><i class="fa fa-user"></i></div>
+								<div class="text">
+									<div class="author"><span>'.$comment->fullname_.'</span> &nbsp; '.$comment->date_.'</div>
+									<p>'.$comment->text_.'</p>
+								</div>
+							</li>';
+                    }
+                ?>
 			</ul>
 		</section>
 		<section class="widget add-comment">	
-			<div class="widget-title">Leave a Comment</div>
-			
-			<form action="#">
-				<input type="text" placeholder="Your Name (required)">
-				<input type="email" placeholder="Your E-mail">
-				<input type="url" placeholder="Your Website">
-				<textarea rows="6" placeholder="Your Message (required)"></textarea>
-				<button type="submit" class="button">Post comment</button>
-			</form>
+			<div class="widget-title">Оставьте отзыв</div>
+			<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+
+                <div class="alert alert-success">
+                    Спасибо, Ваш отзыв принят и отправлен модераторам.
+                </div>
+
+            <?php else: ?>
+
+                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+                    <?= $form->field($model, 'name')->label(false)->textInput(['placeholder' => 'ФИО', 'style' => 'margin-left: 0px; width: 100%']) ?>
+
+                    <?= $form->field($model, 'email')->label(false)->textInput(['placeholder' => 'Е-мэйл','style' => 'margin-left: 0px; width: 100%']) ?>
+
+                    <?= $form->field($model, 'body')->label(false)->textArea(['placeholder' => 'Текст','rows' => 6]) ?>
+
+                    <?= $form->field($model, 'verifyCode')->label(false)->widget(Captcha::className(), [
+                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                    ]) ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Оставить отзыв', ['class' => 'button', 'name' => 'contact-button']) ?>
+                    </div>
+
+                <?php ActiveForm::end(); ?>    
+            <?php endif; ?>
 		</section>
 	</div>
 </main>

@@ -30,7 +30,7 @@ AppAsset::register($this);
         <section id="logo" class="logo">
             <div>
                 <?= Html::a(
-                        '<img src="img/blue/logo.png" width="190" height="50" alt="Clinico">', 
+                        '<img src="img/logo.png" width="90" height="90" alt="Clinico">', 
                         ['/site/index'], 
                         ['class' => ($this->context->route == 'site/index')?'active':'']) 
                     ?>
@@ -411,6 +411,40 @@ AppAsset::register($this);
     </header>
     <!--/ page header -->
 
+    <form id="quick-search" class="quick-search">
+        <fieldset>
+            <div class="vc_row-fluid">
+                <div class="vc_span3">
+                        <div class="milestone clearfix" data-counted="yes">
+                            <div class="icon"><i class="fa fa-users"></i></div>
+                            <div class="title"><?= array_values(array_values(Yii::$app->params['stat-today'])[0])[0]?></div>
+                            Пользователей сегодня
+                        </div>
+                </div>
+                <div class="vc_span3">
+                        <div class="milestone clearfix" data-counted="yes">
+                        <div class="icon"><i class="fa fa-users"></i></div>
+                            <div class="title"><?= array_values(array_values(Yii::$app->params['stat-month'])[0])[0]?></div>
+                            Пользователей за месяц
+                        </div>
+                </div>
+                <div class="vc_span3">
+                        <div class="milestone clearfix" data-counted="yes">
+                        <div class="icon"><i class="fa fa-users"></i></div>
+                            <div class="title"><?= array_values(array_values(Yii::$app->params['stat-all'])[0])[0]?></div>
+                            Пользователей всего
+                        </div>
+                </div>
+                <div class="vc_span3">
+                    <?= Html::button('Запись на прием', array('onclick' => 'js:document.location.href="index.php?r=site/appointment"', 'class'=>'btn-appointment'));?>
+                </div>
+            </div>
+            <div class="switcher">
+                <button id="quick-search-switcher" type="button" class="btn-view-appointment">Запись на прием</button>
+            </div>
+        </fieldset>             
+    </form>
+
     <?= $content ?>
     
     <!-- <div class="container">
@@ -427,60 +461,22 @@ AppAsset::register($this);
                 <section class="widget-alt last-news">
                     <div class="widget-icon"></div>
                     <div class="widget-title"><?= Yii::t('app', 'page.links') ?></div>
-                    <!-- <div>
-                        <div id="thumbs2" style="margin-top: 20px;">
-                            <div class="inner">
-                                <ul>
-                                    <li>
-                                        <a href="http://www.akorda.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/akorda.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.mzsr.gov.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/minzdrav.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://zdravkrg.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/zdravkrg.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://shet-audany.gov.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/shetsk.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://www.strategy2050.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/2050.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://bg.eisz.kz" target="_blank">
-                                            <span class="thumb" style="background-image:url(img/links/bg.jpg)">
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+
+                    <div class="auto">
+
+                        <div class="carousel">
+                            <ul>
+                                <li><a href="http://akorda.kz"><img src="img/links/akorda.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="https://www.mzsr.gov.kz"><img src="img/links/minzdrav.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="http://knf.kz/index.php"><img src="img/links/knf.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="http://zdravkrg.kz"><img src="img/links/zdravkrg.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="http://shet-audany.gov.kz"><img src="img/links/shetsk.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="http://www.strategy2050.kz"><img src="img/links/2050.jpg" style="width:150px; height:90px;"></a></li>
+                                <li><a href="https://bg.eisz.kz"><img src="img/links/bg.jpg" style="width:150px; height:90px;"></a></li>
+                            </ul>
                         </div>
-                    </div> -->
-                    <ul id="vertical-ticker">
-                        <li>One Time</li>
-                        <li>Baby</li>
-                        <li>One Less Lonely Girl</li>
-                        <li>Somebody to Love</li>
-                        <li>Eenie Meenie</li>
-                        <li>Never Say Never</li>
-                        <li>U Smile</li>
-                    </ul>
-                    <p><a href="#" id="ticker-previous">Previous</a> / <a href="#" id="ticker-next">Next</a> / <a id="stop" href="#">Stop</a> / <a id="start" href="#">Start</a></p>
+                    </div>
+                    
                 </section>
                 <!--/ last news -->
             </div>
@@ -538,22 +534,24 @@ AppAsset::register($this);
                 <section class="widget-alt work-time">
                     <div class="widget-icon"></div>
                     <dl>
-                        <dt>Mon</dt>
-                        <dd>08:00 am - 12:00 pm</dd>
-                        <dt>Tue</dt>
-                        <dd>01:00 am - 05:00 pm</dd>
-                        <dt>Wed</dt>
-                        <dd>Free day</dd>
-                        <dt>Thu</dt>
-                        <dd>08:00 am - 12:00 pm</dd>
-                        <dt>Fri</dt>
-                        <dd>08:00 am - 12:00 pm</dd>
-                        <dt>Sat</dt>
-                        <dd>08:00 am - 12:00 pm</dd>
-                        <dt>Sun</dt>
-                        <dd>Free day</dd>
+                        <dt>Пн</dt>
+                        <dd>09:00-18:00</dd>
+                        <dt>Вт</dt>
+                        <dd>09:00-18:00</dd>
+                        <dt>Ср</dt>
+                        <dd>09:00-18:00</dd>
+                        <dt>Чт</dt>
+                        <dd>09:00-18:00</dd>
+                        <dt>Пт</dt>
+                        <dd>09:00-18:00</dd>
+                        <dt>Перерыв</dt>
+                        <dd>13:00-14:00</dd>
+                        <dt>Стационар</dt>
+                        <dd>круглосуточно</dd>
+                        <dt>ВОП(врачи)</dt>
+                        <dd>Пн-Пт 08:00-20:00</dd>
                     </dl>
-                    <a href="#" class="button"><?= Yii::t('app', 'page.schedule') ?></a>
+                    <a class="button"><?= Yii::t('app', 'page.schedule') ?></a>
                 </section>
                 <!--/ work time -->                         
             </div>

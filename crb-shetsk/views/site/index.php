@@ -1,9 +1,10 @@
-<?php
+    <?php
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'КГП "Центральная районная больница Шетского района"';
 ?>
+
 
 <!-- slider -->
 <div class="slider-wrapper">
@@ -11,7 +12,13 @@ $this->title = 'My Yii Application';
         <div class="ls-slide" data-ls="transition2d:9;slidedelay:7000;">                    
             <img src="pic/medical-slide-1.jpg" alt="" class="ls-bg">
             
-            <div class="intro ls-l" data-ls="offsetyin:top;offsetxin:0;durationin:2000;offsetyout:bottom;offsetxout:0;durationout:1000;" style="left:80%;top:35%;">
+            <div class="intro ls-l" 
+            data-ls="offsetyin:top;
+            offsetxin:0;
+            durationin:2000;
+            offsetyout:bottom;
+            offsetxout:0;
+            durationout:1000;" style="left:80%;top:35%;">
                 <span class="icon fa fa-users"></span>
                 <h2><?= Yii::t('app', 'page.slide.hot.apparat')?><span><?= Yii::t('app', 'page.slide.hot.management')?></span></h2>            
                 <div class="buttons">
@@ -24,7 +31,18 @@ $this->title = 'My Yii Application';
         <div class="ls-slide" data-ls="transition2d:40;slidedelay:7000;">               
             <img src="pic/medical-slide-2.jpg" alt="" class="ls-bg">
             
-            <div class="intro ls-l" data-ls="scalexin:0.3;scaleyin:0.3;rotatexin:180;offsetxin:0;durationin:2000;durationout:2000;scalexout:2;scaleyout:2;offsetxout:0;fadeout:true;showuntil:3000;" style="left:80%;top:35%;">
+            <div class="intro ls-l" 
+            data-ls="scalexin:0.3;
+            scaleyin:0.3;
+            rotatexin:180;
+            offsetxin:0;
+            durationin:2000;
+            durationout:2000;
+            scalexout:2;
+            scaleyout:2;
+            offsetxout:0;
+            fadeout:true;
+            showuntil:3000;" style="left:80%;top:35%;">
                 <span class="icon fa fa-ambulance"></span>
                 <h2><?= Yii::t('app', 'page.slide.hot.precinct')?><span><?= Yii::t('app', 'page.slide.hot.service')?></span></h2>            
                 <div class="buttons">
@@ -37,7 +55,16 @@ $this->title = 'My Yii Application';
         <div class="ls-slide" data-ls="transition2d:11;slidedelay:7000;">
             <img src="pic/medical-slide-3.jpg" alt="" class="ls-bg">
             
-            <div class="intro ls-l" data-ls="skewxin:30;skewyin:0;offsetxin:right;fadein:false;durationin:2000;durationout:1000;offsetxout:right;offsetyout:0;fadeout:true;" style="left:80%;top:35%;">
+            <div class="intro ls-l" 
+            data-ls="skewxin:30;
+            skewyin:0;
+            offsetxin:right;
+            fadein:false;
+            durationin:2000;
+            durationout:1000;
+            offsetxout:right;
+            offsetyout:0;
+            fadeout:true;" style="left:80%;top:35%;">
                 <span class="icon fa fa-hospital-o"></span>
                 <h2><?= Yii::t('app', 'page.slide.hot.stationary')?><span><?= Yii::t('app', 'page.slide.hot.service')?></span></h2>            
                 <div class="buttons">

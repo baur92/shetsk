@@ -8,3 +8,13 @@ $(function(){
 			});
 		});
 });
+
+$(function() {
+
+	$(".auto .carousel").jCarouselLite({
+	    auto: 2000,
+	    speed: 2000,
+	    vertical: true,
+	    circular: true
+	});
+});

@@ -13,11 +13,12 @@ use yii\helpers\VarDumper;
 use app\models\Users;
 use app\models\News;
 use yii\data\Pagination;
+use app\models\Comments;
 
 class SiteController extends Controller
 {
     public function behaviors()
-    {
+    {    
         return [
             // 'access' => [
             //     'class' => AccessControl::className(),
@@ -48,6 +49,17 @@ class SiteController extends Controller
         }
         Yii::$app->params['users'] = Users::find()->orderBy(['id_' => SORT_ASC])->all();
         Yii::$app->params['news'] = News::find()->limit(3)->orderBy(['id_' => SORT_DESC])->all();
+
+        Yii::$app->params['stat-today'] = (new \yii\db\Query())->select('value_')->from('counter')->where('key_=\'appointments\' and create_date_ = \''.date("d.m.y").'\'')->createCommand()->queryAll();
+        if(!Yii::$app->params['stat-today']){
+            Yii::$app->db->createCommand()->insert('counter', ['value_' => 0,'key_' => 'appointments','create_date_'=>date("d.m.y"),])->execute();
+            $query = (new \yii\db\Query())->select('value_')->from('counter')->where('key_=\'appointments\' and create_date_ = \''.date("d.m.y").'\'');
+            $command = $query->createCommand();
+            Yii::$app->params['stat-today'] = $command->queryAll();
+        }
+        $monthBefore = date("d.m.y", strtotime( date( "d.m.y", strtotime( date("d.m.y") ) ) . "-1 month" ) );
+        Yii::$app->params['stat-month'] = (new \yii\db\Query())->select('sum(value_)')->from('counter')->where('key_=\'appointments\' and create_date_ <= \''.date("d.m.y").'\' and create_date_ >= \''.$monthBefore.'\'')->createCommand()->queryAll();
+        Yii::$app->params['stat-all'] = (new \yii\db\Query())->select('sum(value_)')->from('counter')->where('key_=\'appointments\'')->createCommand()->queryAll();    
     }
 
     public function actions()
@@ -61,6 +73,21 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionAppointment()
+    {
+        $query = (new \yii\db\Query())->select('value_')->from('counter')->where('key_=\'appointments\' and create_date_ = \''.date("d.m.y").'\'');
+        $command = $query->createCommand();
+        $data = $command->queryAll();
+        if(!$data){
+            Yii::$app->db->createCommand()->insert('counter', ['value_' => 0,'key_' => 'appointments','create_date_'=>date("d.m.y"),])->execute();
+            $query = (new \yii\db\Query())->select('value_')->from('counter')->where('key_=\'appointments\' and create_date_ = \''.date("d.m.y").'\'');
+            $command = $query->createCommand();
+            $data = $command->queryAll();
+        }
+        Yii::$app->db->createCommand()->update('counter', ['value_' => ++array_values(array_values($data)[0])[0]], 'key_=\'appointments\' and create_date_ = \''.date("d.m.y").'\'')->execute();
+        return $this->redirect('https://dmedlkp.ezdravkrg.org/');
     }
 
     public function actionIndex()
@@ -110,25 +137,8 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
-            if($model->validate()) {
-                // Yii::$app->mailer->compose()
-                //     ->setFrom('bauyrzhan.mazhikov@gmail.com')
-                //     ->setTo('to@domain.com')
-                //     ->setSubject('Message subject')
-                //     ->setTextBody('Plain text content')
-                //     ->setHtmlBody('<b>HTML content</b>')
-                //     ->send();
-
-                $value = Yii::$app->mailer->compose()
-                ->setFrom([$model->email => $model->name])
-                ->setSubject($model->subject)
-                ->setHtmlBody($model->body)
-                ->send();
-            }
-
-            //return $this->refresh();
         }
+
         return $this->render('contact', [
             'model' => $model,
         ]);
@@ -223,7 +233,27 @@ class SiteController extends Controller
     // end: section Services
 
     public function actionComments(){
-        return $this->render('/site/comments');
+        $model = new ContactForm();
+        $model->subject = 'Отзыв';
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+        }
+
+        $query = Comments::find();
+        $countQuery = clone $query;
+        $total = $countQuery->count();
+        $pages = new Pagination(['totalCount' => $total, 'pageSize' => 5]);
+        $comments = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy(['id_' => SORT_DESC])
+            ->all();
+
+        return $this->render('comments', [
+            'comments' => $comments,
+            'pages' => $pages,
+            'total' => $total,
+            'model' => $model
+        ]);
     }
 
     public function actionAnswers(){
@@ -234,6 +264,7 @@ class SiteController extends Controller
     {
         $query = News::find();
         $countQuery = clone $query;
+        $total = $countQuery->count();
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
         $news = $query->offset($pages->offset)
             ->limit($pages->limit)
@@ -243,6 +274,7 @@ class SiteController extends Controller
         return $this->render('news', [
              'news' => $news,
              'pages' => $pages,
+             'total' => $total
         ]);
     }
 
