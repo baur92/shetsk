@@ -36,3 +36,20 @@ text-align: center; /* Center our text */
 	margin: 10px 0px 10px 0px;
 	border-bottom:  1px dashed;
 }
+
+.blog-button {
+	top:10px;
+	text-decoration: none !important;
+}
+
+.info-table {
+	 border: 1px solid;
+}
+
+.info-table tr {
+	 border: 1px solid;
+}
+
+.info-table td {
+	 border: 1px solid;
+}

@@ -14,6 +14,8 @@ use app\models\Users;
 use app\models\News;
 use yii\data\Pagination;
 use app\models\Comments;
+use app\models\Blog;
+use yii\db\Query;
 
 class SiteController extends Controller
 {
@@ -278,8 +280,38 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionNewsInfo(){
+        return $this->render('/site/news/info');
+    }
+
     public function actionStateSymbols()
     {
         return $this->render('state-symbols');
+    }
+
+    public function actionBlog(){
+        $model = new ContactForm();
+        $model->subject = 'Обращение';
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->db->createCommand()->insert('blog', ['fullname_' => $model->name,'question_' => $model->body,'date_'=>date("d.m.y"),'posted_'=>false])->execute();
+            Yii::$app->session->setFlash('contactFormSubmitted');
+        }
+
+        $query = Blog::find()->where('posted_=true');
+        $countQuery = clone $query;
+        $total = $countQuery->count();
+        $pages = new Pagination(['totalCount' => $total, 'pageSize' => 5]);
+
+        $comments = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy(['id_' => SORT_DESC])
+            ->all();
+
+        return $this->render('blog', [
+            'comments' => $comments,
+            'pages' => $pages,
+            'total' => $total,
+            'model' => $model
+        ]);
     }
 }

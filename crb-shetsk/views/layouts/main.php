@@ -53,8 +53,17 @@ AppAsset::register($this);
                     <?= Html::a(
                         '<i class="fa fa-plus"></i>'.Yii::t('app', 'menu.page.news'), 
                         ['/site/news'], 
-                        ['class' => ($this->context->route == 'site/news')?'active':'']) 
+                        ['class' => (strpos($this->context->route, 'site/news') !== false)?'active':'']) 
                     ?>
+                    <ul>
+                        <li>
+                            <?= Html::a(
+                                Yii::t('app', 'menu.page.news.info'), 
+                                ['site/news-info'], 
+                                ['class' => (strpos($this->context->route, 'site/news-info') !== false)?'active':'']) 
+                            ?>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <?= Html::a(

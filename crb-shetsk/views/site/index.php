@@ -1,6 +1,7 @@
-    <?php
-
+<?php
 /* @var $this yii\web\View */
+
+use yii\helpers\Html;
 
 $this->title = 'КГП "Центральная районная больница Шетского района"';
 ?>
@@ -132,33 +133,14 @@ $this->title = 'КГП "Центральная районная больница
             }
         ?>
         <!--/ testimonial -->
-    </div>
-    <div class="grid-row">
-        <!-- doctors carousel -->
-        <section class="widget doctors-carousel doctors">
-            <div class="widget-title"><?= Yii::t('app', 'page.main.administration')?></div>
-            <div id="doctors-carousel" class="owl-carousel">
-                <?php 
-                    foreach($users as $user){
-                        echo '<div class="item">
-                                <div class="pic">
-                                    <img src="'.$user->photo_.'" width="270" height="270" alt="'.$user->lastname_.' '.$user->firstname_.' '.$user->patronymic_.'">
-                                    <div class="links">
-                                        <ul>
-                                            <li><a href="#" class="fa fa-skype"></a></li>
-                                            <li><a href="#" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" class="fa fa-facebook"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h3>'.$user->lastname_.' '.$user->firstname_.' '.$user->patronymic_.'</h3>
-                                <p>'.$user->position_.'</p>
-                            </div>';
-                    }
-                ?>
-            </div>
-        </section>
-        <!--/ doctors carousel -->
+        <div style="text-align:center;">
+            <?= Html::a(
+                        Yii::t('app', 'page.main.blog.go'), 
+                        ['/site/blog'], 
+                        ['class' => 'wpb_button wpb_btn-large blog-button']) 
+                    ?>
+            <!-- <button class="wpb_button wpb_btn-large" style="top:10px; left:35%">Перейти на Блог Руководителя</button> -->
+        </div>
     </div>
 
 </main>
